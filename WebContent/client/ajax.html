@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax练习</title>
+</head>
+<body>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-2.1.1.js"></script>  
+<script type="text/javascript">  
+    $(function(){  
+        $.ajax({  
+            url : "AjaxJson",   //请求url  
+            type : "POST",  //请求类型  post|get  
+         // data : "key=value&key1=value2", //后台用 request.getParameter("key");  
+            dataType : "json",  //返回数据的 类型 text|json|html--  
+            success : function(users){  //回调函数 和 后台返回的 数据  
+                var tBody = $("#tbBody");  
+                for(var i=0; i<users.length; i++){  //通过遍历，创建行数据  
+                    var tr = $("<tr><td>"+users[i].id+"</td><td>"+users[i].name+"</td><td>"+users[i].school+"</td></tr>")  
+                    tBody.append(tr);  
+                }  
+            }  
+        });  
+    });  
+    // get 方式 发送请求  
+    // $.get(url,data,callback,type); data为 发送的数据  {key:value}形式 ，   
+    //  callback成功时的回调函数 function(result){}  result 后台返回的数据  ，  
+    //type  返回的数据类型  默认为 text ,可以设为 json text   
+    //post 方式 发送请求  
+    // $.post(url,data,callback,type);  
+      
+</script>  
+</body>
+</html>

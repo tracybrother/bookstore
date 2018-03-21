@@ -1,0 +1,203 @@
+<html>
+<head>
+<title>电子书城</title>
+<link rel="stylesheet" href="css/main.css" type="text/css" />
+
+<script type="text/javascript">
+	/**
+	 * my_click和my_blur均是用于前台页面搜索框的函数
+	 */
+	//鼠标点击搜索框时执行
+	function my_click(obj, myid) {
+		//点击时，如果取得的值和搜索框默认value值相同，则将搜索框清空
+		if (document.getElementById(myid).value == document
+				.getElementById(myid).defaultValue) {
+			document.getElementById(myid).value = '';
+			obj.style.color = '#000';
+		}
+	}
+	//鼠标不聚焦在搜索框时执行
+	function my_blur(obj, myid) {
+		//鼠标失焦时，如果搜索框没有输入值，则用搜索框的默认value值填充
+		if (document.getElementById(myid).value == '') {
+			document.getElementById(myid).value = document.getElementById(myid).defaultValue;
+			obj.style.color = '#999';
+		}
+	}
+
+	/**
+	 * 点击搜索按钮执行的函数
+	 */
+	function search() {
+		document.getElementById("searchform").submit();
+	}
+</script>
+</head>
+
+<body class="main">
+	<div id="divhead">
+		<table cellspacing="0" class="headtable">
+			<tr>
+				<td><a href="${pageContext.request.contextPath }/index.jsp">
+						<img src="images/logo.png" width="200" height="60" border="0" />
+				</a></td>
+				<td style="text-align: right"><img src="images/cart.gif"
+					width="26" height="23" style="margin-bottom: -4px" />&nbsp;<a
+					href="#">购物车</a> | <a href="#">帮助中心</a> | <a href="myAccount">我的帐户</a>
+					| <a href="client/login.jsp">登录</a> | <a href="client/register.jsp">新用户注册</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<div id="divmenu">
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=文学">文学</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=生活">生活</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=计算机">计算机</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=外语">外语</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=经营">经管</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=励志">励志</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=社科">社科</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=学术">学术</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=少儿">少儿</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=艺术">艺术</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=原版">原版</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=科技">科技</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=考试">考试</a>
+		<a
+			href="${pageContext.request.contextPath}/showProductByPage?category=生活百科">生活百科</a>
+		<a href="${pageContext.request.contextPath}/showProductByPage"
+			style="color: #FFFF00">全部商品目录</a>
+	</div>
+	<div id="divsearch">
+		<form action="${pageContext.request.contextPath }/MenuSearchSerlvet"
+			id="searchform">
+			<table width="100%" border="0" cellspacing="0">
+				<tr>
+					<td style="text-align: right; padding-right: 220px">Search <input
+						type="text" name="textfield" class="inputtable" id="textfield"
+						value="请输入书名" onmouseover="this.focus();"
+						onclick="my_click(this, 'textfield');"
+						onBlur="my_blur(this, 'textfield');" /> <a href="#"> <img
+							src="images/serchbutton.gif"
+							border="0" style="margin-bottom: -4px" onclick="search()" />
+					</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="divcontent">
+		<form action="login" method="post">
+			<table width="900px" border="0" cellspacing="0">
+				<tr>
+					<td style="padding: 30px"><div style="height: 470px">
+							<b>&nbsp;&nbsp;首页&nbsp;&raquo;&nbsp;个人用户登录</b>
+							<div>
+								<table width="85%" border="0" cellspacing="0">
+									<tr>
+										<td>
+											<div id="logindiv">
+												<table width="100%" border="0" cellspacing="0">
+													<tr>
+														<td style="text-align: center; padding-top: 20px"><img
+															src="images/logintitle.gif" width="150" height="30" /></td>
+													</tr>
+													<tr>
+														<td style="text-align: center; padding-top: 20px;"><font
+															color="#ff0000"></font>
+														</td>
+													</tr>
+													<tr>
+														<td style="text-align: center">
+															<table width="80%" border="0" cellspacing="0"
+																style="margin-top: 15px; margin-left: auto; margin-right: auto">
+																<tr>
+																	<td
+																		style="text-align: right; padding-top: 5px; width: 25%">用户名：</td>
+																	<td style="text-align: left"><input
+																		name="username" type="text" class="textinput" /></td>
+																</tr>
+																<tr>
+																	<td style="text-align: right; padding-top: 5px">密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+																	<td style="text-align: left"><input
+																		name="password" type="password" class="textinput" />
+																	</td>
+																</tr>
+																<tr>
+																	<td colspan="2" style="text-align: center"><input
+																		type="checkbox" name="checkbox" value="checkbox" />
+																		记住用户名&nbsp;&nbsp; <input type="checkbox"
+																		name="checkbox" value="checkbox" /> 自动登录</td>
+																</tr>
+																<tr>
+																	<td colspan="2"
+																		style="padding-top: 10px; text-align: center"><input
+																		name="image" type="image" onclick="return formcheck()"
+																		src="images/loginbutton.gif" width="83" height="22" />
+																	</td>
+																</tr>
+
+																<tr>
+																	<td colspan="2" style="padding-top: 10px"><img
+																		src="images/loginline.gif" width="241" height="10" />
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</div>
+										</td>
+										<td style="text-align: left; padding-top: 30px; width: 60%"><h1>您还没有注册？</h1>
+											<p>注册新会员，享受更优惠价格!</p>
+											<p>万种商品，供你挑选！注册即享受丰富折扣和优惠，便宜有好货！超过万本图书任您选。</p>
+											<p>超人气社区！精彩活动每一天。买卖更安心！支付宝交易超安全。</p>
+											<p style="text-align: left">
+												<a
+													href="${pageContext.request.contextPath }/client/register.jsp">
+													<img src="images/signupbutton.gif" width="135" height="33" />
+												</a>
+											</p></td>
+									</tr>
+								</table>
+							</div>
+						</div></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+
+	<div id="divfoot">
+		<table width="100%" border="0" cellspacing="0">
+			<tr>
+				<td rowspan="2" style="width: 10%"></td>
+				<td style="padding-top: 5px; padding-left: 50px"><a href="#">
+						<font color="#747556"><b>CONTACT US</b></font>
+				</a></td>
+			</tr>
+			<tr>
+				<td style="padding-left: 50px"><font color="#CCCCCC"> <b>COPYRIGHT
+							2018 &copy; BookStore All Rights RESERVED.</b>
+				</font></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>
