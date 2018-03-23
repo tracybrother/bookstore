@@ -3,6 +3,9 @@ package dao;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+
+import javax.servlet.http.HttpSession;
 
 public class TestDao extends BaseDao {
 	
@@ -25,5 +28,15 @@ public class TestDao extends BaseDao {
 		for (Map<String, Object> map : selectAll) {
 			System.out.println(map.get("name"));
 		}
+	}
+	
+	private static final Random random = new Random(System.currentTimeMillis());
+	public static final String TOKENPARAM = "session-token";
+	 
+	/** 生成一个token */
+	public static synchronized String generateToken(HttpSession session) {
+	    String s = String.valueOf(random.nextLong());
+	    session.setAttribute(TOKENPARAM, s);
+	    return s;
 	}
 }

@@ -30,7 +30,7 @@ public class EncodingFilter implements Filter {
 		response.setContentType("text/html;charset=utf-8");
 
 		chain.doFilter(myRequest, response);
-
+		
 	}
 
 	public void destroy() {

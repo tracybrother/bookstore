@@ -3,13 +3,8 @@
 
 <title>注册页面</title>
 <link rel="stylesheet" href="css/main.css" type="text/css" />
-<script type="text/javascript">
-	function changeImage() {
-		// 改变验证码图片中的文字
-		document.getElementById("img").src = "/day01/imageCode?time="
-				+ new Date().getTime();
-	}
-</script>
+<script  src = 'jquery/jquery-1.9.1.min.js'></script>
+<script type="text/javascript" src = "js/regist.js"></script>
 
 </head>
 <body class="main">
@@ -63,14 +58,15 @@
 			style="color: #FFFF00">全部商品目录</a>
 	</div>
 	<div id="divcontent">
-		<form action="/day01/regist" method="post">
+		<form action="/day01/regist" method="post" onsubmit="return check()">
 			<table width="850px" border="0" cellspacing="0">
 				<tr>
 					<td style="padding: 30px"><h1>新会员注册</h1>
 						<table width="70%" border="0" cellspacing="2" class="upline">
 							<tr>
 								<td style="text-align: right">会员名：</td>
-								<td><input type="text" class="textinput" name="username" />
+								<td><input type="text" class="textinput" id="username" name="username" />
+									<span id = "userNameMessage"> </span>
 								</td>
 							</tr>
 							<tr>
@@ -117,7 +113,8 @@
 						<table width="80%" border="0" cellspacing="2" class="upline">
 							<tr>
 								<td style="text-align: right; width: 20%">输入校验码：</td>
-								<td style="width: 50%"><input type="text" class="textinput" />
+								<td style="width: 50%"><input type="text" id="codetext"  class="textinput" onblur="inputOnBlur();"/>
+								<span id = "codeErrorMessage"> </span>
 								</td>
 								<td>&nbsp;</td>
 							</tr>

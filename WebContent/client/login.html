@@ -3,35 +3,8 @@
 <title>电子书城</title>
 <link rel="stylesheet" href="css/main.css" type="text/css" />
 
-<script type="text/javascript">
-	/**
-	 * my_click和my_blur均是用于前台页面搜索框的函数
-	 */
-	//鼠标点击搜索框时执行
-	function my_click(obj, myid) {
-		//点击时，如果取得的值和搜索框默认value值相同，则将搜索框清空
-		if (document.getElementById(myid).value == document
-				.getElementById(myid).defaultValue) {
-			document.getElementById(myid).value = '';
-			obj.style.color = '#000';
-		}
-	}
-	//鼠标不聚焦在搜索框时执行
-	function my_blur(obj, myid) {
-		//鼠标失焦时，如果搜索框没有输入值，则用搜索框的默认value值填充
-		if (document.getElementById(myid).value == '') {
-			document.getElementById(myid).value = document.getElementById(myid).defaultValue;
-			obj.style.color = '#999';
-		}
-	}
-
-	/**
-	 * 点击搜索按钮执行的函数
-	 */
-	function search() {
-		document.getElementById("searchform").submit();
-	}
-</script>
+<script type="text/javascript" src = "js/login.js"></script>
+<script  src = 'jquery/jquery-1.9.1.min.js'></script>
 </head>
 
 <body class="main">
@@ -102,7 +75,6 @@
 		</form>
 	</div>
 	<div id="divcontent">
-		<form action="login" method="post">
 			<table width="900px" border="0" cellspacing="0">
 				<tr>
 					<td style="padding: 30px"><div style="height: 470px">
@@ -118,24 +90,25 @@
 															src="images/logintitle.gif" width="150" height="30" /></td>
 													</tr>
 													<tr>
-														<td style="text-align: center; padding-top: 20px;"><font
-															color="#ff0000"></font>
+														<td  style="text-align: center; padding-top: 20px;"><font id =  "loginErrMes"
+															color="#ff0000"> </font>
 														</td>
 													</tr>
 													<tr>
 														<td style="text-align: center">
 															<table width="80%" border="0" cellspacing="0"
-																style="margin-top: 15px; margin-left: auto; margin-right: auto">
+																style="margin-top: 5px; margin-left: auto; margin-right: auto">
 																<tr>
+																	
 																	<td
 																		style="text-align: right; padding-top: 5px; width: 25%">用户名：</td>
 																	<td style="text-align: left"><input
-																		name="username" type="text" class="textinput" /></td>
+																		id = "username" name="username" type="text" class="textinput" /></td>
 																</tr>
 																<tr>
 																	<td style="text-align: right; padding-top: 5px">密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
 																	<td style="text-align: left"><input
-																		name="password" type="password" class="textinput" />
+																		id= "password" name="password" type="password" class="textinput" />
 																	</td>
 																</tr>
 																<tr>
@@ -147,7 +120,7 @@
 																<tr>
 																	<td colspan="2"
 																		style="padding-top: 10px; text-align: center"><input
-																		name="image" type="image" onclick="return formcheck()"
+																		name="image" type="image" onclick="login()"
 																		src="images/loginbutton.gif" width="83" height="22" />
 																	</td>
 																</tr>
@@ -179,7 +152,6 @@
 						</div></td>
 				</tr>
 			</table>
-		</form>
 	</div>
 
 

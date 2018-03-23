@@ -1,8 +1,11 @@
 package dao;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
+
+import org.apache.commons.beanutils.BeanUtils;
 
 import po.User;
 
@@ -35,8 +38,33 @@ public class UserDao extends BaseDao {
 		update(sql, params);
 	}
 	
+	/**
+	 * 通过用户名和密码查询用户
+	 * 
+	 * @param args
+	 * @throws SQLException
+	 * @throws InvocationTargetException 
+	 * @throws IllegalAccessException 
+	 */
+     public User findByUserNameAndPwd(String username, String password) throws SQLException, IllegalAccessException, InvocationTargetException{
+		String sql = "select * from user where username = ? and password = ?";
+		ArrayList<Object> params = new ArrayList<Object>();
+		params.add(username);
+		params.add(password);
+		Map<String, Object> findOne = findOne(sql, params);
+		if(findOne.isEmpty()) {
+			return null;
+		}
+		System.out.println(findOne);
+		User user = new User();
+		System.out.println("封装前:" + user);
+		BeanUtils.populate(user, findOne);
+		System.out.println("封装后:" + user);
+		return user;
+	}
+	
 	// test
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) throws SQLException, IllegalAccessException, InvocationTargetException {
 		UserDao userDao = new UserDao();
 		User user = new User();
 		user.setUsername("lisi");
@@ -45,6 +73,8 @@ public class UserDao extends BaseDao {
 		user.setEmail("274047925@qq.com");
 		user.setIntroduce("测试账号");
 		user.setTelephone("15887845678");
-		userDao.insert(user);
+//		userDao.insert(user);
+		userDao.findByUserNameAndPwd("lisi", "a2334818");
+		
 	}
 }
