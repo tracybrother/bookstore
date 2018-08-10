@@ -15,7 +15,7 @@ import util.DBUtil;
 public class BaseDao {
 	
 	/**
-	 * 增加、删除、改
+	 * 增加、删除、改 测试
 	 * 
 	 * @param sql
 	 * @param params
